@@ -1,0 +1,52 @@
+{
+  "name": "@abi-software/plotdatahelpers",
+  "version": "0.1.0",
+  "scripts": {
+    "build-package": "vite build",
+    "version": "npm run build-package",
+    "release:beta": "npm version prerelease --preid=beta; npm publish --tag beta",
+    "release:minor": "npm version minor; npm publish",
+    "release:patch": "npm version patch;  npm publish",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "npm run vuese-gen; vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "type": "module",
+  "main": "./dist/plotdatahelpers.umd.cjs",
+  "module": "./dist/plotdatahelpers.js",
+  "exports": {
+    ".": {
+      "import": "./dist/plotdatahelpers.js",
+      "require": "./dist/plotdatahelpers.umd.cjs"
+    },
+    "./src/*": "./src/*"
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "*.json",
+    "*.js"
+  ],
+  "dependencies": {
+    "papaparse": "^5.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/eslint-parser": "^7.26.5",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "@vuese/markdown-render": "^2.11.3",
+    "chokidar": "^4.0.1",
+    "concurrently": "^9.0.1",
+    "eslint": "^9.18.0",
+    "prettier": "^3.3.3",
+    "sass": "^1.83.4",
+    "unplugin-vue-components": "^28.0.0",
+    "vite": "^5.0.12",
+    "vitepress": "^1.6.3",
+    "vue-docgen-api": "^4.79.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
