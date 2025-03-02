@@ -1,32 +1,11 @@
 # Plot Data Helpers
 
 [![npm version](https://badge.fury.io/js/%40abi-software%2Fplotdatahelpers.svg)](https://badge.fury.io/js/%40abi-software%2Fplotdatahelpers)
-[![Maintainability](https://api.codeclimate.com/v1/badges/8dd727f153711aaae6e1/maintainability)](https://codeclimate.com/github/Tehsurfer/plotdatahelpers/maintainability)
 
-This project is now in Vue 3 only.
-
-If using vue 2, use the [Vue-2 branch](https://github.com/ABI-Software/plotdatahelpers/tree/Vue-2)
-
-This project aims to process and display csv files as graphs in the vue framework
-
-Demo the site functionality of this app [here](https://plotdatahelpers-demo.herokuapp.com/)*.
-
-*_Demo will take 30s to load while Heroku server boots_
-
-![demo](https://user-images.githubusercontent.com/37255664/73617045-a3231e00-467f-11ea-90bd-b1074acd26b3.gif)
-
-**Don't feel like coding? See how to copy and paste plotdatahelpers as an HTML widget [here](https://github.com/ABI-Software/plotdatahelpers/blob/master/README.md#copy-and-paste-as-an-html-widget)**
 
 ## Project installation
 ```
 npm i @abi-software/plotdatahelpers
-```
-
-
-## Project setup
-```
-npm install
-npm run serve
 ```
 
 ### Compiles and minifies for production
