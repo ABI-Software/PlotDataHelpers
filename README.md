@@ -2,6 +2,10 @@
 
 [![npm version](https://badge.fury.io/js/%40abi-software%2Fplotdatahelpers.svg)](https://badge.fury.io/js/%40abi-software%2Fplotdatahelpers)
 
+This project is for providing helper functions to transform data into a form consumable by the plotly.js library.
+This project makes use of the [papaparse](https://www.papaparse.com/) package to read de-limited data files from resources available on the web.
+It is designed to take metadata information gathered from [SCICRUNCH](https://sparc.science/tools-and-resources/ncnLaJM7nMt053Zjv9XHy) and use this information to duplicate a figure from a [SPARC](https://sparc.science) dataset.
+This package can format de-limited data into scatter plots or heatmap plots.
 
 ## Project installation
 ```
@@ -18,132 +22,3 @@ Include the package in your script.
 ```javascript
 import { applyFilter, extractTitles, convertToPlotlyData } from '@abi-software/plotdatahelpers'
 ```
-
-The snippet above registers the plotdatahelpers component into the global scope.
-You can now use the plotdatahelpers in your vue template as followed:
-
-```html
-<plotdatahelpers :data-source="data" :metadata="metadata" :supplemental-data="supplementalData"></plotdatahelpers>
-```
-
-`datasource` has two options for loading data into plotdatahelpers:
-
-##### Using plotly directly
-
-```javascript
-let data = {
-  data: [
-    {
-      x: [0, 1, 2, 3, 4, 5],
-      y: [100, 10, 130, 70, 80, 90],
-      type: 'scatter'
-    }
-  ],
-  layout: { // **Optional**
-    height: '700px',
-    margin: {
-      t: 35,
-      l: 85,
-      r: 55,
-      b: 190,
-      pad: 4
-    }
-  }
-}
-
-
-let metadata = {
-  version: '1.1.0',
-  type: 'plot',
-  attrs: {
-    style: 'timeseries', // Style will be 'timeseries' or 'heatmap'
-    }
-  }
-}
-
-```
-Note that these are the same inputs for data and layout as plotly normally takes in [`Plotly.newPlot()`](https://plotly.com/javascript/plotlyjs-function-reference/)
-
-##### Sending plotly a csv file url
-
-```javascript
-let data = {
-  url : 'https://example.com/myfile.csv'
-}
-
-
-let metadata= {
-  version: '1.1.0',
-  type: 'plot',
-  attrs: {
-    'x-axis-column': 2, // **Optional**
-    style: 'timeseries',
-    'y-axes-columns': [3, 4, 5, 6, 7, 8, 9, 10], // **Optional**
-    'plot-layout': { // **Optional**
-      height: '700px',
-      margin: {
-        t: 35,
-        l: 85,
-        r: 55,
-        b: 190,
-        pad: 4
-      }
-    }
-  }
-}
-
-let supplementalData = {
-  url : 'https://example.com/mySupplementalFile.json'
-}
-```
-
-## CSV file formatting
-
-`plotdatahelpers` will load and csv file that follow the form of headers on first row and coloumn and if data is time based, rows will be assumed to be time dependant.
-
-### Example 1. Heatmap data
-
-|               | Gene 1  | Gene 2 |
-| :------------ |:--------|  ------|
-| Sample 1      | -1.54 | -3.40 |
-| Sample 2      | 0.68       |   1.22 |
-| Sample 3      | 0.05      |    0.66 |
-
-
-### Example 2. Timeseries data
-
-
-| time (seconds)| Sweep 0_Membrane Potential (mV) |
-| :------------ |:--------|
-| 0     | -70.12939453 |
-| 0.0002    | -70.12939453     |
-| 0.0004      | -70.34301758      |
-
-
-## Copy and paste as an HTML widget
-Paste the following lines in the `<body>` of you HTML
-```HTML
- <!-- Modify the 'file' input to point to a csv file you wish to show -->
- <plot-vuer-widget file="https://mapcore-bucket1.s3-us-west-2.amazonaws.com/ISAN/csv-data/use-case-4/RNA_Seq.csv"></plot-vuer-widget>
- <!-- widget source css from cdn-->
- <link href="https://cdn.jsdelivr.net/npm/@tehsurfer/plotdatahelpers-widget/dist/plotdatahelpers.css" rel="stylesheet">
- <!-- widget source js from cdn -->
- <script src="https://cdn.jsdelivr.net/npm/@tehsurfer/plotdatahelpers-widget/dist/plotdatahelpers.js"></script>
-```
-### Modifying input file for widget
-Change this line to point at a csv file for display
-```HTML
- <!-- Modify the 'file' input to point to a csv file you wish to show -->
- <plot-vuer-widget file="./path/to/file.csv"></plot-vuer-widget>
-```
-
-## Developer Documentation
-
-The documentation is developed with `vitepress` and `vuese`. Documentation pages are in the `docs` folder.
-
-### To run in local development mode
-```bash
-npm run docs:watch
-```
-
-This will start the documentation server with `vitepress` on port `:5173` and watch the components' changes.
