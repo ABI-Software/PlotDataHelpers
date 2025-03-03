@@ -15,7 +15,7 @@ export default defineConfig(({command, mode}) => {
       lib: {
         entry: path.resolve(__dirname, './src/index.js'),
         name: 'PlotDataHelpers',
-        fileName: 'PlotDataHelpers'
+        fileName: 'plotdatahelpers'
       },
       build: {
         commonjsOptions: {transformMixedEsModules: true} // Change
