@@ -9,12 +9,12 @@ This package can format de-limited data into scatter plots or heatmap plots.
 
 ## Project installation
 ```
-npm i @abi-software/plotdatahelpers
+yarn add @abi-software/plotdatahelpers
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build-package
+yarn build-package
 ```
 
 ## How to use
