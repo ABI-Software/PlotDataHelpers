@@ -1,6 +1,6 @@
 {
   "name": "@abi-software/plotdatahelpers",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "build-package": "vite build",
     "version": "npm run build-package",
