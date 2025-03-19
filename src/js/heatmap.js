@@ -11,6 +11,15 @@ export function toPlotly(data, metadata, supplementalData) {
   })
   // const transposedDataValues = transpose(dataValues)
 
+  if (metadata?.attrs?.logScale) {
+    dataValues.forEach(r => {
+      r.forEach((c, j) => {
+        r[j] = Math.log10(c)
+      })
+    })
+  }
+
+
   const plotly_data = [
     {
       x: columnHeaders,
