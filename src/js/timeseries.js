@@ -32,14 +32,22 @@ export function toPlotly(data, metadata, supplementalData) {
   // console.log(data)
   // console.log(traceNames)
   // console.log(metadata['attrs']['y-axes-columns'])
+  const traceColours = metadata['attrs']['trace-colours']
   let plotly_data = []
+  let index = 0
   for (let col of metadata['attrs']['y-axes-columns']) {
-    plotly_data.push({
+    const colour = traceColours ? traceColours[index] : undefined;
+    index += 1
+    const trace = {
       x: xAxis,
       y: transposedData[col],
       name: traceNames[col],
       mode: 'lines'
-    })
+    }
+    if (colour) {
+      trace.line = { color: colour }
+    }
+    plotly_data.push(trace)
   }
 
   const plotly_layout = {
